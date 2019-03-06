@@ -1,12 +1,21 @@
 import React, {Component} from 'react'
+import './index.css';
+import './clickjs.js';
 
+
+
+
+
+
+
+  
 
 
 class AddNinja extends Component {
     state ={
         name: null,
-        age: null,
-        belt: null
+        time: null,
+        
     }
 
     handleChange = (e) => {
@@ -17,20 +26,28 @@ class AddNinja extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.state.name == null ? alert("Please put down something to do") : 
+        this.state.time == null ? alert("please give a time to complete task"):
         this.props.addNinja(this.state);
+        e.target.reset();
+     
+     
+        
         
     }
     render(){
         return ( 
             <div>
-                <form onSubmit = {this.handleSubmit}> 
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" onChange={this.handleChange} />
-                    <label htmlFor="name">Age:</label>
-                    <input type="text" id="age" onChange={this.handleChange} />
-                    <label htmlFor="name">Belt:</label>
-                    <input type="text" id="belt" onChange={this.handleChange} />
-                    <button>Submit</button>
+                <form onSubmit = {this.handleSubmit}>
+                    <ul>
+                        <li><label className = "labels" htmlFor="name1">What do you want to get done?:</label>
+                        <input className = "input1" type="text" id="name" onChange={this.handleChange} /><span className = "underline"></span></li>
+                        
+                        <li><label className = "labels" htmlFor="name2">Approx. time to completion (in days):</label>
+                        <input className = "input2" type="text" id="time" onChange={this.handleChange} /><span className = "underline"></span></li>
+                        
+                        <li><button className = "btn"><span>Submit</span></button></li>
+                    </ul>
                 </form>
             </div>
         )

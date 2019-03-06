@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import David from './Davids';
 import AddNinja from './addNinja';
+import './index.css';
+
+
+
 
 
 
 class App extends Component {
   state = {
-    ninjas : [
-      {name: 'Ryu', age: 30, belt: 'black', id: 1},
-      {name: 'Yoshi', age: 20, belt: 'pink', id: 2},
-      {name: 'Crystal', age: 25, belt: 'pink', id: 3}
-      
-    ]
+    ninjas : []
   }
   /*don't setState outside of state because it is bad practice*/
   addNinja = (ninja) => {
@@ -22,7 +21,7 @@ class App extends Component {
     this.setState({
       ninjas: ninjas
     })
-    console.log(ninjas)
+   
 
 
   }
@@ -33,17 +32,38 @@ class App extends Component {
     })
     this.setState({ninjas: ninjas})
   }
-  render() {
-    return (
-      <div className="App">
-        <h1>My First React App</h1>
-        <p>Welcome :)</p>
-        <David deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
-        <AddNinja addNinja={this.addNinja}/>
 
-      </div>
-    );
-  }
+  
+    render() {
+      return (
+        <div className = "wholeApp">
+          <div className= "app">
+            <div className="header">
+              <h1 className = "text">Things To Do</h1>
+              <p className = "text2">Lets Get Stuff Done Today :)</p>
+            </div>
+          
+            <div className = "components">
+              <AddNinja addNinja={this.addNinja} ninjas={this.state.ninjas}/>
+              
+            </div>
+
+          </div>
+          <div className = "components2">
+            
+            <span><David deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/></span>
+            
+          </div>
+            
+        
+            
+
+        </div>
+        
+        
+      );
+    }
+  
 }
 
 export default App;
